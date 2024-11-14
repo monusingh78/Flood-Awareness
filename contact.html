@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Flood Awareness</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .contact-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h3, h4 {
+            color: #0066cc;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #fafafa;
+        }
+        input:focus, textarea:focus {
+            border-color: #0066cc;
+            outline: none;
+            background-color: #eef6ff;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            font-weight: bold;
+            color: white;
+            background-color: #0066cc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #004c99;
+        }
+        .error {
+            color: #cc0000;
+            font-size: 0.9em;
+            display: none;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        .success-message {
+            color: #006600;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+        .contact-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .social-links {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .social-links a {
+            margin: 0 10px;
+            color: #0066cc;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Flood Awareness</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="causes.html">Causes</a></li>
+                <li><a href="historical.html">Historical Events</a></li>
+                <li><a href="impact.html">Impact of Floods</a></li>
+                <li><a href="prevention.html">Prevention and Preparedness</a></li>
+                <li><a href="stories.html">Personal Stories</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="news.html">Current News</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome to Flood Awareness</h2>
+        <p style="text-align:center; max-width: 800px; margin: auto;">This website aims to educate about floods, their causes, impacts, and ways to prepare and recover.</p>
+
+        <div class="contact-container" id="contact">
+            <h3>Contact Us</h3>
+            <p>If you have questions or feedback, please reach out using the form below, or via the contact information provided.</p>
+
+            <!-- Success message at the top -->
+            <p class="success-message" id="successMessage">Thank you for your message! We will get back to you shortly.</p>
+
+            <form id="contactForm" onsubmit="return validateForm()">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name">
+                <span class="error" id="nameError">Please enter your name with at least 3 characters.</span>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email">
+                <span class="error" id="emailError">Please enter a valid email address.</span>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Your Message"></textarea>
+                <span class="error" id="messageError">Please enter your message.</span>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <div class="contact-info">
+                <h4>Contact Information</h4>
+                <p><strong>Email:</strong> <a href="mailto:info@floodawareness.org">info@floodawareness.org</a></p>
+                <p><strong>Phone:</strong> +91 9696969696</p>
+                <p><strong>Address:</strong> 123 Flood Awareness Ave, Suite 100, Cityville, Country</p>
+            </div>
+
+            <div class="social-links">
+                <h4>Follow Us</h4>
+                <a href="https://facebook.com/floodawareness" target="_blank">Facebook</a> |
+                <a href="https://twitter.com/floodawareness" target="_blank">Twitter</a> |
+                <a href="https://instagram.com/floodawareness" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Flood Awareness. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const message = document.getElementById("message");
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const messageError = document.getElementById("messageError");
+            const successMessage = document.getElementById("successMessage");
+            
+            let isValid = true;
+            let errorMessages = [];
+
+            
+            successMessage.style.display = "none";
+            nameError.style.display = "none";
+            emailError.style.display = "none";
+            messageError.style.display = "none";
+
+            
+            if (!name.value.trim() || name.value.trim().length < 3) {
+                errorMessages.push("Please enter a name with at least 3 characters.");
+                nameError.style.display = "block";
+                isValid = false;
+            }
+
+            
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.value.trim() || !emailPattern.test(email.value)) {
+                errorMessages.push("Please enter a valid email address.");
+                emailError.style.display = "block";
+                isValid = false;
+            }
+
+            
+            if (!message.value.trim()) {
+                errorMessages.push("Please enter your message.");
+                messageError.style.display = "block";
+                isValid = false;
+            }
+
+            
+            if (!isValid) {
+                alert(errorMessages.join("\n"));
+                return false;
+            }
+
+            
+            successMessage.style.display = "block";
+            document.getElementById("contactForm").reset();
+            return false; 
+        }
+    </script>
+</body>
+</html>
